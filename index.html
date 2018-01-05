@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Site about mine learning JavaScript</title>
+</head>
+<body>
+
+<h1>JavaScript</h1>
+
+  <h2>Ежедневник</h2>
+  <strong>День недели: </strong>
+  <select>
+    <option>Понедельник</option>
+    <option>Вторник</option>
+    <option>Среда</option>
+    <option>Четверг</option>
+    <option>Пятница</option>
+    <option>Суббота</option>
+    <option>Воскресенье</option>
+  </select>
+  <textarea id="list" placeholder="Enter the text"></textarea>
+  <button onclick="send()">Отправить</button>
+  <button onclick="print()">Распечатать</button>
+<div></div>
+
+<script>
+  var note = [];
+
+  function send(){
+    var dayOfTheWeek = document.getElementsByTagName('select')[0].value,
+        message      = document.getElementsByTagName('textarea')[0].value;
+
+        note.push('<p> В ' + dayOfTheWeek + '</p><p>' + message + '.</p><hr>');
+
+        document.getElementsByTagName('textarea')[0].value = '';
+		
+        // Why this code not equivalent/equal each other?
+
+        // message = '';     
+        // or
+        // message.value = '';
+  }
+
+  const print = () => {
+
+        var printOut = document.getElementsByTagName('div')[0],
+            str      = note.join('');
+
+        printOut.innerHTML = str;  
+  }
+</script>
+</body>
+</html>
